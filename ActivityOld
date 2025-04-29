@@ -1,0 +1,1720 @@
+.class public Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;
+.super Landroidx/appcompat/app/AppCompatActivity;
+.source ""
+
+# interfaces
+.implements Lcom/applovin/mediation/MaxAdViewAdListener;
+
+
+# instance fields
+.field private a:Ljikansoftware/com/blocdenotas/ui/notes/n;
+
+.field private b:Ljikansoftware/com/blocdenotas/f/e;
+
+.field private c:Ljikansoftware/com/blocdenotas/ui/notes/o;
+
+.field private d:Landroid/app/AlertDialog;
+
+.field private e:Ljikansoftware/com/blocdenotas/h/a;
+
+.field private f:Lcom/applovin/mediation/ads/MaxAdView;
+
+.field private g:Lcom/applovin/mediation/ads/MaxInterstitialAd;
+
+.field private h:I
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Landroidx/appcompat/app/AppCompatActivity;-><init>()V
+
+    return-void
+.end method
+
+.method static synthetic A(Landroid/content/DialogInterface;I)V
+    .locals 0
+
+    invoke-interface {p0}, Landroid/content/DialogInterface;->dismiss()V
+
+    return-void
+.end method
+
+.method private synthetic B(Ljava/lang/Object;)V
+    .locals 0
+
+    invoke-direct {p0}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->j()V
+
+    return-void
+.end method
+
+.method static synthetic D(Landroid/content/DialogInterface;I)V
+    .locals 0
+
+    invoke-interface {p0}, Landroid/content/DialogInterface;->cancel()V
+
+    return-void
+.end method
+
+.method private synthetic E()V
+    .locals 2
+
+    iget-object v0, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->b:Ljikansoftware/com/blocdenotas/f/e;
+
+    iget-object v0, v0, Ljikansoftware/com/blocdenotas/f/e;->b:Landroidx/recyclerview/widget/RecyclerView;
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Landroidx/recyclerview/widget/RecyclerView;->smoothScrollToPosition(I)V
+
+    return-void
+.end method
+
+.method private J(Ljikansoftware/com/blocdenotas/h/a;)V
+    .locals 2
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "T\n"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v1, p1, Ljikansoftware/com/blocdenotas/h/a;->b:Ljava/lang/String;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v1, "\n\nD\n"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object p1, p1, Ljikansoftware/com/blocdenotas/h/a;->c:Ljava/lang/String;
+
+    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    new-instance v0, Landroid/content/Intent;
+
+    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
+
+    const-string v1, "android.intent.action.SEND"
+
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
+
+    const-string v1, "android.intent.extra.TEXT"
+
+    invoke-virtual {v0, v1, p1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    const-string p1, "text/plain"
+
+    invoke-virtual {v0, p1}, Landroid/content/Intent;->setType(Ljava/lang/String;)Landroid/content/Intent;
+
+    invoke-virtual {p0}, Landroidx/appcompat/app/AppCompatActivity;->getResources()Landroid/content/res/Resources;
+
+    move-result-object p1
+
+    const v1, 0x7f1000ac
+
+    invoke-virtual {p1, v1}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
+
+    move-result-object p1
+
+    invoke-static {v0, p1}, Landroid/content/Intent;->createChooser(Landroid/content/Intent;Ljava/lang/CharSequence;)Landroid/content/Intent;
+
+    move-result-object p1
+
+    invoke-static {p0, p1}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->safedk_Activity_startActivity_9d898b58165fa4ba0e12c3900a2b8533(Landroid/app/Activity;Landroid/content/Intent;)V
+
+    return-void
+.end method
+
+.method private K(Z)V
+    .locals 2
+
+    iget-object v0, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->b:Ljikansoftware/com/blocdenotas/f/e;
+
+    if-nez v0, :cond_0
+
+    return-void
+
+    :cond_0
+    iget-object v0, v0, Ljikansoftware/com/blocdenotas/f/e;->c:Landroid/view/View;
+
+    if-eqz p1, :cond_1
+
+    const/4 v1, 0x0
+
+    goto :goto_0
+
+    :cond_1
+    const/16 v1, 0x8
+
+    :goto_0
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    const/16 v0, 0x10
+
+    if-eqz p1, :cond_2
+
+    invoke-virtual {p0}, Landroid/app/Activity;->getWindow()Landroid/view/Window;
+
+    move-result-object p1
+
+    invoke-virtual {p1, v0}, Landroid/view/Window;->addFlags(I)V
+
+    goto :goto_1
+
+    :cond_2
+    invoke-virtual {p0}, Landroid/app/Activity;->getWindow()Landroid/view/Window;
+
+    move-result-object p1
+
+    invoke-virtual {p1, v0}, Landroid/view/Window;->clearFlags(I)V
+
+    :goto_1
+    return-void
+.end method
+
+.method private L(Ljava/util/List;)V
+    .locals 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/List<",
+            "Ljikansoftware/com/blocdenotas/h/a;",
+            ">;)V"
+        }
+    .end annotation
+
+    iget-object v0, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->a:Ljikansoftware/com/blocdenotas/ui/notes/n;
+
+    invoke-virtual {v0, p1}, Landroidx/recyclerview/widget/ListAdapter;->submitList(Ljava/util/List;)V
+
+    invoke-interface {p1}, Ljava/util/List;->size()I
+
+    move-result v0
+
+    const/4 v1, 0x0
+
+    if-lez v0, :cond_1
+
+    iget-object v0, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->e:Ljikansoftware/com/blocdenotas/h/a;
+
+    if-eqz v0, :cond_0
+
+    invoke-interface {p1, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljikansoftware/com/blocdenotas/h/a;
+
+    iget-object v0, v0, Ljikansoftware/com/blocdenotas/h/a;->a:Ljava/lang/Integer;
+
+    iget-object v2, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->e:Ljikansoftware/com/blocdenotas/h/a;
+
+    iget-object v2, v2, Ljikansoftware/com/blocdenotas/h/a;->a:Ljava/lang/Integer;
+
+    invoke-virtual {v0, v2}, Ljava/lang/Integer;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    :cond_0
+    iget-object v0, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->b:Ljikansoftware/com/blocdenotas/f/e;
+
+    iget-object v0, v0, Ljikansoftware/com/blocdenotas/f/e;->b:Landroidx/recyclerview/widget/RecyclerView;
+
+    new-instance v2, Ljikansoftware/com/blocdenotas/ui/notes/e;
+
+    invoke-direct {v2, p0}, Ljikansoftware/com/blocdenotas/ui/notes/e;-><init>(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;)V
+
+    invoke-virtual {v0, v2}, Landroid/view/ViewGroup;->post(Ljava/lang/Runnable;)Z
+
+    :cond_1
+    invoke-interface {p1}, Ljava/util/List;->size()I
+
+    move-result v0
+
+    if-lez v0, :cond_2
+
+    invoke-interface {p1, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object p1
+
+    check-cast p1, Ljikansoftware/com/blocdenotas/h/a;
+
+    goto :goto_0
+
+    :cond_2
+    const/4 p1, 0x0
+
+    :goto_0
+    iput-object p1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->e:Ljikansoftware/com/blocdenotas/h/a;
+
+    return-void
+.end method
+
+.method static synthetic a(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;)Lcom/applovin/mediation/ads/MaxInterstitialAd;
+    .locals 0
+
+    iget-object p0, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->g:Lcom/applovin/mediation/ads/MaxInterstitialAd;
+
+    return-object p0
+.end method
+
+.method static synthetic b(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;Z)V
+    .locals 0
+
+    invoke-direct {p0, p1}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->K(Z)V
+
+    return-void
+.end method
+
+.method private c()V
+    .locals 3
+
+    new-instance v0, Landroid/app/AlertDialog$Builder;
+
+    invoke-direct {v0, p0}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
+
+    const v1, 0x7f1000a5
+
+    invoke-virtual {v0, v1}, Landroid/app/AlertDialog$Builder;->setTitle(I)Landroid/app/AlertDialog$Builder;
+
+    move-result-object v0
+
+    const v1, 0x7f1000a6
+
+    invoke-virtual {v0, v1}, Landroid/app/AlertDialog$Builder;->setMessage(I)Landroid/app/AlertDialog$Builder;
+
+    move-result-object v0
+
+    const v1, 0x1080027
+
+    invoke-virtual {v0, v1}, Landroid/app/AlertDialog$Builder;->setIcon(I)Landroid/app/AlertDialog$Builder;
+
+    move-result-object v0
+
+    new-instance v1, Ljikansoftware/com/blocdenotas/ui/notes/i;
+
+    invoke-direct {v1, p0}, Ljikansoftware/com/blocdenotas/ui/notes/i;-><init>(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;)V
+
+    const-string v2, "S\u00ed"
+
+    invoke-virtual {v0, v2, v1}, Landroid/app/AlertDialog$Builder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+
+    move-result-object v0
+
+    const-string v1, "No"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2}, Landroid/app/AlertDialog$Builder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+
+    return-void
+.end method
+
+.method private i(I)V
+    .locals 3
+
+    new-instance v0, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions$Builder;
+
+    sget-object v1, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;->DEFAULT_SIGN_IN:Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;
+
+    invoke-direct {v0, v1}, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions$Builder;-><init>(Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;)V
+
+    invoke-virtual {v0}, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions$Builder;->requestEmail()Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions$Builder;
+
+    move-result-object v0
+
+    sget-object v1, Lcom/google/android/gms/drive/Drive;->SCOPE_FILE:Lcom/google/android/gms/common/api/Scope;
+
+    const/4 v2, 0x0
+
+    new-array v2, v2, [Lcom/google/android/gms/common/api/Scope;
+
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions$Builder;->requestScopes(Lcom/google/android/gms/common/api/Scope;[Lcom/google/android/gms/common/api/Scope;)Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions$Builder;
+
+    move-result-object v0
+
+    const-string v1, "850501784701-gpc8466s7ba3agh1d1mmo7rcfed75re7.apps.googleusercontent.com"
+
+    invoke-virtual {v0, v1}, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions$Builder;->requestIdToken(Ljava/lang/String;)Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions$Builder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions$Builder;->build()Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;
+
+    move-result-object v0
+
+    invoke-static {p0, v0}, Lcom/google/android/gms/auth/api/signin/GoogleSignIn;->getClient(Landroid/app/Activity;Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;)Lcom/google/android/gms/auth/api/signin/GoogleSignInClient;
+
+    move-result-object v0
+
+    invoke-static {p0}, Lcom/google/android/gms/auth/api/signin/GoogleSignIn;->getLastSignedInAccount(Landroid/content/Context;)Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+
+    invoke-virtual {v0}, Lcom/google/android/gms/auth/api/signin/GoogleSignInClient;->getSignInIntent()Landroid/content/Intent;
+
+    move-result-object v0
+
+    invoke-static {p0, v0, p1}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->safedk_FragmentActivity_startActivityForResult_e56928f8b530a6072bef74f3c2961619(Landroidx/fragment/app/FragmentActivity;Landroid/content/Intent;I)V
+
+    return-void
+.end method
+
+.method private j()V
+    .locals 2
+
+    new-instance v0, Landroid/content/Intent;
+
+    const-class v1, Ljikansoftware/com/blocdenotas/ui/note_edit/NewNoteEditActivity;
+
+    invoke-direct {v0, p0, v1}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+
+    invoke-static {p0, v0}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->safedk_Activity_startActivity_9d898b58165fa4ba0e12c3900a2b8533(Landroid/app/Activity;Landroid/content/Intent;)V
+
+    return-void
+.end method
+
+.method private k(Ljikansoftware/com/blocdenotas/h/a;)V
+    .locals 2
+
+    new-instance v0, Landroid/content/Intent;
+
+    const-class v1, Ljikansoftware/com/blocdenotas/ui/note_edit/NewNoteEditActivity;
+
+    invoke-direct {v0, p0, v1}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+
+    iget-object p1, p1, Ljikansoftware/com/blocdenotas/h/a;->a:Ljava/lang/Integer;
+
+    const-string v1, "extra_note_id"
+
+    invoke-virtual {v0, v1, p1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;
+
+    invoke-static {p0, v0}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->safedk_Activity_startActivity_9d898b58165fa4ba0e12c3900a2b8533(Landroid/app/Activity;Landroid/content/Intent;)V
+
+    return-void
+.end method
+
+.method private l(Landroid/content/Intent;I)V
+    .locals 1
+
+    invoke-static {p1}, Lcom/google/android/gms/auth/api/signin/GoogleSignIn;->getSignedInAccountFromIntent(Landroid/content/Intent;)Lcom/google/android/gms/tasks/Task;
+
+    move-result-object p1
+
+    new-instance v0, Ljikansoftware/com/blocdenotas/ui/notes/f;
+
+    invoke-direct {v0, p0, p2}, Ljikansoftware/com/blocdenotas/ui/notes/f;-><init>(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;I)V
+
+    invoke-virtual {p1, v0}, Lcom/google/android/gms/tasks/Task;->addOnSuccessListener(Lcom/google/android/gms/tasks/OnSuccessListener;)Lcom/google/android/gms/tasks/Task;
+
+    move-result-object p1
+
+    new-instance p2, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity$c;
+
+    invoke-direct {p2, p0}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity$c;-><init>(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;)V
+
+    invoke-virtual {p1, p2}, Lcom/google/android/gms/tasks/Task;->addOnFailureListener(Lcom/google/android/gms/tasks/OnFailureListener;)Lcom/google/android/gms/tasks/Task;
+
+    return-void
+.end method
+
+.method private m()V
+    .locals 0
+
+    return-void
+.end method
+
+.method private n()V
+    .locals 3
+
+    new-instance v0, Landroid/app/AlertDialog$Builder;
+
+    invoke-direct {v0, p0}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
+
+    const v1, 0x7f1000b2
+
+    invoke-virtual {v0, v1}, Landroid/app/AlertDialog$Builder;->setTitle(I)Landroid/app/AlertDialog$Builder;
+
+    move-result-object v0
+
+    const v1, 0x7f1000a8
+
+    invoke-virtual {v0, v1}, Landroid/app/AlertDialog$Builder;->setMessage(I)Landroid/app/AlertDialog$Builder;
+
+    move-result-object v0
+
+    const v1, 0x1080027
+
+    invoke-virtual {v0, v1}, Landroid/app/AlertDialog$Builder;->setIcon(I)Landroid/app/AlertDialog$Builder;
+
+    move-result-object v0
+
+    new-instance v1, Ljikansoftware/com/blocdenotas/ui/notes/j;
+
+    invoke-direct {v1, p0}, Ljikansoftware/com/blocdenotas/ui/notes/j;-><init>(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;)V
+
+    const v2, 0x7f100097
+
+    invoke-virtual {v0, v2, v1}, Landroid/app/AlertDialog$Builder;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+
+    move-result-object v0
+
+    sget-object v1, Ljikansoftware/com/blocdenotas/ui/notes/g;->a:Ljikansoftware/com/blocdenotas/ui/notes/g;
+
+    const v2, 0x7f100023
+
+    invoke-virtual {v0, v2, v1}, Landroid/app/AlertDialog$Builder;->setNegativeButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/app/AlertDialog$Builder;->create()Landroid/app/AlertDialog;
+
+    move-result-object v0
+
+    iput-object v0, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->d:Landroid/app/AlertDialog;
+
+    return-void
+.end method
+
+.method public static synthetic o(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;Ljava/util/List;)V
+    .locals 0
+
+    invoke-direct {p0, p1}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->L(Ljava/util/List;)V
+
+    return-void
+.end method
+
+.method public static synthetic p(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;Ljikansoftware/com/blocdenotas/h/a;)V
+    .locals 0
+
+    invoke-direct {p0, p1}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->k(Ljikansoftware/com/blocdenotas/h/a;)V
+
+    return-void
+.end method
+
+.method private synthetic q(Landroid/content/DialogInterface;I)V
+    .locals 0
+
+    invoke-static {p0}, Ljikansoftware/com/blocdenotas/ui/notes/m;->e(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;)V
+
+    return-void
+.end method
+
+.method private synthetic s(Landroidx/lifecycle/MutableLiveData;)V
+    .locals 4
+
+    const-string v0, "data"
+
+    invoke-virtual {p0, v0}, Landroid/app/Activity;->getDatabasePath(Ljava/lang/String;)Ljava/io/File;
+
+    move-result-object v0
+
+    new-instance v1, Ljava/io/File;
+
+    invoke-static {}, Landroid/os/Environment;->getExternalStorageDirectory()Ljava/io/File;
+
+    move-result-object v2
+
+    const-string v3, "drive_blocdenotas.db_tmp"
+
+    invoke-direct {v1, v2, v3}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+
+    invoke-static {v0, v1}, Ljikansoftware/com/blocdenotas/j/d;->a(Ljava/io/File;Ljava/io/File;)Z
+
+    invoke-static {p0}, Ljikansoftware/com/blocdenotas/j/b;->d(Landroid/content/Context;)Lcom/google/api/services/drive/Drive;
+
+    move-result-object v0
+
+    const-string v2, "drive_blocdenotas.db"
+
+    const/4 v3, 0x0
+
+    invoke-static {v0, v1, v2, v3}, Ljikansoftware/com/blocdenotas/j/b;->f(Lcom/google/api/services/drive/Drive;Ljava/io/File;Ljava/lang/String;Ljava/lang/String;)Lcom/google/api/services/drive/model/File;
+
+    move-result-object v0
+
+    invoke-virtual {v1}, Ljava/io/File;->delete()Z
+
+    invoke-virtual {p1, v0}, Landroidx/lifecycle/MutableLiveData;->postValue(Ljava/lang/Object;)V
+
+    return-void
+.end method
+
+.method public static safedk_Activity_startActivity_9d898b58165fa4ba0e12c3900a2b8533(Landroid/app/Activity;Landroid/content/Intent;)V
+    .locals 1
+    .param p0, "p0"    # Landroid/app/Activity;
+    .param p1, "p1"    # Landroid/content/Intent;
+
+    const-string v0, "SafeDK-Special|SafeDK: Call> Landroid/app/Activity;->startActivity(Landroid/content/Intent;)V"
+
+    invoke-static {v0}, Lcom/safedk/android/utils/Logger;->d(Ljava/lang/String;)I
+
+    if-nez p1, :cond_0
+
+    return-void
+
+    :cond_0
+    invoke-virtual {p0, p1}, Landroid/app/Activity;->startActivity(Landroid/content/Intent;)V
+
+    return-void
+.end method
+
+.method public static safedk_FragmentActivity_startActivityForResult_e56928f8b530a6072bef74f3c2961619(Landroidx/fragment/app/FragmentActivity;Landroid/content/Intent;I)V
+    .locals 1
+    .param p0, "p0"    # Landroidx/fragment/app/FragmentActivity;
+    .param p1, "p1"    # Landroid/content/Intent;
+    .param p2, "p2"    # I
+
+    const-string v0, "SafeDK-Special|SafeDK: Call> Landroidx/fragment/app/FragmentActivity;->startActivityForResult(Landroid/content/Intent;I)V"
+
+    invoke-static {v0}, Lcom/safedk/android/utils/Logger;->d(Ljava/lang/String;)I
+
+    if-nez p1, :cond_0
+
+    return-void
+
+    :cond_0
+    invoke-virtual {p0, p1, p2}, Landroidx/fragment/app/FragmentActivity;->startActivityForResult(Landroid/content/Intent;I)V
+
+    return-void
+.end method
+
+.method private synthetic u(Landroidx/lifecycle/MutableLiveData;)V
+    .locals 4
+
+    new-instance v0, Ljava/io/File;
+
+    invoke-static {}, Landroid/os/Environment;->getExternalStorageDirectory()Ljava/io/File;
+
+    move-result-object v1
+
+    const-string v2, "drive_blocdenotas.db_tmp"
+
+    invoke-direct {v0, v1, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+
+    invoke-static {p0}, Ljikansoftware/com/blocdenotas/j/b;->d(Landroid/content/Context;)Lcom/google/api/services/drive/Drive;
+
+    move-result-object v1
+
+    const-string v2, "drive_blocdenotas.db"
+
+    const/4 v3, 0x0
+
+    invoke-static {v1, v0, v2, v3}, Ljikansoftware/com/blocdenotas/j/b;->b(Lcom/google/api/services/drive/Drive;Ljava/io/File;Ljava/lang/String;Ljava/lang/String;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    const-string v2, "data"
+
+    invoke-virtual {p0, v2}, Landroid/app/Activity;->getDatabasePath(Ljava/lang/String;)Ljava/io/File;
+
+    move-result-object v2
+
+    const/4 v3, 0x1
+
+    invoke-static {v0, v2, v3}, Ljikansoftware/com/blocdenotas/j/d;->b(Ljava/io/File;Ljava/io/File;Z)Z
+
+    :cond_0
+    invoke-static {v1}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v0
+
+    invoke-virtual {p1, v0}, Landroidx/lifecycle/MutableLiveData;->postValue(Ljava/lang/Object;)V
+
+    return-void
+.end method
+
+.method private synthetic w(ILcom/google/android/gms/auth/api/signin/GoogleSignInAccount;)V
+    .locals 0
+
+    const/16 p2, 0x64
+
+    if-eq p1, p2, :cond_1
+
+    const/16 p2, 0x65
+
+    if-eq p1, p2, :cond_0
+
+    goto :goto_0
+
+    :cond_0
+    invoke-static {p0}, Ljikansoftware/com/blocdenotas/ui/notes/m;->c(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;)V
+
+    goto :goto_0
+
+    :cond_1
+    invoke-static {p0}, Ljikansoftware/com/blocdenotas/ui/notes/m;->b(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;)V
+
+    :goto_0
+    return-void
+.end method
+
+.method private synthetic y(Landroid/content/DialogInterface;I)V
+    .locals 0
+
+    invoke-static {p0}, Lcom/google/android/gms/auth/api/signin/GoogleSignIn;->getLastSignedInAccount(Landroid/content/Context;)Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+
+    move-result-object p1
+
+    if-nez p1, :cond_0
+
+    const/16 p1, 0x65
+
+    invoke-direct {p0, p1}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->i(I)V
+
+    goto :goto_0
+
+    :cond_0
+    invoke-static {p0}, Ljikansoftware/com/blocdenotas/ui/notes/m;->c(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;)V
+
+    :goto_0
+    return-void
+.end method
+
+
+# virtual methods
+.method public synthetic C(Ljava/lang/Object;)V
+    .locals 0
+
+    invoke-direct {p0, p1}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->B(Ljava/lang/Object;)V
+
+    return-void
+.end method
+
+.method public synthetic F()V
+    .locals 0
+
+    invoke-direct {p0}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->E()V
+
+    return-void
+.end method
+
+.method G()V
+    .locals 5
+
+    const v0, 0x7f10009e
+
+    const/4 v1, 0x1
+
+    invoke-static {p0, v0, v1}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/widget/Toast;->show()V
+
+    const-string v0, "data"
+
+    invoke-virtual {p0, v0}, Landroid/app/Activity;->getDatabasePath(Ljava/lang/String;)Ljava/io/File;
+
+    move-result-object v0
+
+    new-instance v2, Ljava/io/File;
+
+    invoke-static {}, Landroid/os/Environment;->getExternalStorageDirectory()Ljava/io/File;
+
+    move-result-object v3
+
+    const-string v4, "blocdenotas.db"
+
+    invoke-direct {v2, v3, v4}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+
+    invoke-static {v0, v2}, Ljikansoftware/com/blocdenotas/j/d;->a(Ljava/io/File;Ljava/io/File;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    const v0, 0x7f1000af
+
+    goto :goto_0
+
+    :cond_0
+    const v0, 0x7f10004a
+
+    :goto_0
+    invoke-static {p0, v0, v1}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/widget/Toast;->show()V
+
+    return-void
+.end method
+
+.method H()V
+    .locals 4
+
+    const v0, 0x7f10009e
+
+    const/4 v1, 0x1
+
+    invoke-static {p0, v0, v1}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/widget/Toast;->show()V
+
+    new-instance v0, Ljava/io/File;
+
+    invoke-static {}, Landroid/os/Environment;->getExternalStorageDirectory()Ljava/io/File;
+
+    move-result-object v2
+
+    const-string v3, "blocdenotas.db"
+
+    invoke-direct {v0, v2, v3}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+
+    invoke-virtual {v0}, Ljava/io/File;->exists()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    const-string v2, "data"
+
+    invoke-virtual {p0, v2}, Landroid/app/Activity;->getDatabasePath(Ljava/lang/String;)Ljava/io/File;
+
+    move-result-object v2
+
+    invoke-static {v0, v2}, Ljikansoftware/com/blocdenotas/j/d;->a(Ljava/io/File;Ljava/io/File;)Z
+
+    move-result v0
+
+    goto :goto_0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    :goto_0
+    if-eqz v0, :cond_1
+
+    const v2, 0x7f1000b0
+
+    goto :goto_1
+
+    :cond_1
+    const v2, 0x7f10004b
+
+    :goto_1
+    invoke-static {p0, v2, v1}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/widget/Toast;->show()V
+
+    if-eqz v0, :cond_2
+
+    invoke-virtual {p0}, Landroid/app/Activity;->recreate()V
+
+    goto :goto_2
+
+    :cond_2
+    const v0, 0x7f100027
+
+    invoke-static {p0, v0, v1}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/widget/Toast;->show()V
+
+    :goto_2
+    return-void
+.end method
+
+.method I()V
+    .locals 2
+
+    const v0, 0x7f10009d
+
+    const/4 v1, 0x1
+
+    invoke-static {p0, v0, v1}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/widget/Toast;->show()V
+
+    return-void
+.end method
+
+.method d()V
+    .locals 3
+
+    new-instance v0, Lcom/applovin/mediation/ads/MaxAdView;
+
+    const-string v1, "095f65b41592e54c"
+
+    invoke-direct {v0, v1, p0}, Lcom/applovin/mediation/ads/MaxAdView;-><init>(Ljava/lang/String;Landroid/content/Context;)V
+
+    iput-object v0, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->f:Lcom/applovin/mediation/ads/MaxAdView;
+
+    invoke-virtual {v0, p0}, Lcom/applovin/mediation/ads/MaxAdView;->setListener(Lcom/applovin/mediation/MaxAdViewAdListener;)V
+
+    invoke-virtual {p0}, Landroidx/appcompat/app/AppCompatActivity;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    const v1, 0x7f06005a
+
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v0
+
+    new-instance v1, Landroid/widget/FrameLayout$LayoutParams;
+
+    const/4 v2, -0x1
+
+    invoke-direct {v1, v2, v0}, Landroid/widget/FrameLayout$LayoutParams;-><init>(II)V
+
+    const/16 v0, 0x51
+
+    iput v0, v1, Landroid/widget/FrameLayout$LayoutParams;->gravity:I
+
+    iget-object v0, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->f:Lcom/applovin/mediation/ads/MaxAdView;
+
+    invoke-virtual {v0, v1}, Landroid/widget/RelativeLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    const v0, 0x1020002
+
+    invoke-virtual {p0, v0}, Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/view/ViewGroup;
+
+    iget-object v1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->f:Lcom/applovin/mediation/ads/MaxAdView;
+
+    invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
+
+    iget-object v0, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->f:Lcom/applovin/mediation/ads/MaxAdView;
+
+    invoke-virtual {v0}, Lcom/applovin/mediation/ads/MaxAdView;->loadAd()V
+
+    iget-object v0, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->f:Lcom/applovin/mediation/ads/MaxAdView;
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    iget-object v0, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->f:Lcom/applovin/mediation/ads/MaxAdView;
+
+    invoke-virtual {v0}, Lcom/applovin/mediation/ads/MaxAdView;->startAutoRefresh()V
+
+    return-void
+.end method
+
+.method e()V
+    .locals 2
+
+    new-instance v0, Lcom/applovin/mediation/ads/MaxInterstitialAd;
+
+    const-string v1, "e1b90f677f6fea8d"
+
+    invoke-direct {v0, v1, p0}, Lcom/applovin/mediation/ads/MaxInterstitialAd;-><init>(Ljava/lang/String;Landroid/app/Activity;)V
+
+    iput-object v0, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->g:Lcom/applovin/mediation/ads/MaxInterstitialAd;
+
+    invoke-virtual {v0, p0}, Lcom/applovin/mediation/ads/MaxInterstitialAd;->setListener(Lcom/applovin/mediation/MaxAdListener;)V
+
+    iget-object v0, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->g:Lcom/applovin/mediation/ads/MaxInterstitialAd;
+
+    invoke-virtual {v0}, Lcom/applovin/mediation/ads/MaxInterstitialAd;->loadAd()V
+
+    return-void
+.end method
+
+.method f()V
+    .locals 3
+
+    new-instance v0, Ljava/io/File;
+
+    invoke-static {}, Landroid/os/Environment;->getExternalStorageDirectory()Ljava/io/File;
+
+    move-result-object v1
+
+    const-string v2, "blocdenotas.txt"
+
+    invoke-direct {v0, v1, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+
+    invoke-virtual {v0}, Ljava/io/File;->exists()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_1
+
+    invoke-static {p0, v0}, Ljikansoftware/com/blocdenotas/c;->c(Landroid/content/Context;Ljava/io/File;)Ljava/util/List;
+
+    move-result-object v0
+
+    iget-object v1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->c:Ljikansoftware/com/blocdenotas/ui/notes/o;
+
+    invoke-virtual {v1, v0}, Ljikansoftware/com/blocdenotas/ui/notes/o;->f(Ljava/util/List;)V
+
+    if-nez v0, :cond_0
+
+    const v0, 0x7f10004b
+
+    goto :goto_0
+
+    :cond_0
+    const v0, 0x7f1000b0
+
+    :goto_0
+    const/4 v1, 0x0
+
+    invoke-static {p0, v0, v1}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/widget/Toast;->show()V
+
+    invoke-virtual {p0}, Landroid/app/Activity;->recreate()V
+
+    :cond_1
+    return-void
+.end method
+
+.method g()V
+    .locals 3
+
+    const/4 v0, 0x1
+
+    invoke-direct {p0, v0}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->K(Z)V
+
+    new-instance v0, Landroidx/lifecycle/MutableLiveData;
+
+    invoke-direct {v0}, Landroidx/lifecycle/MutableLiveData;-><init>()V
+
+    new-instance v1, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity$d;
+
+    invoke-direct {v1, p0, v0}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity$d;-><init>(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;Landroidx/lifecycle/MutableLiveData;)V
+
+    invoke-virtual {v0, v1}, Landroidx/lifecycle/LiveData;->observeForever(Landroidx/lifecycle/Observer;)V
+
+    invoke-static {}, Ljikansoftware/com/blocdenotas/j/c;->b()Ljikansoftware/com/blocdenotas/b;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljikansoftware/com/blocdenotas/b;->c()Ljava/util/concurrent/Executor;
+
+    move-result-object v1
+
+    new-instance v2, Ljikansoftware/com/blocdenotas/ui/notes/d;
+
+    invoke-direct {v2, p0, v0}, Ljikansoftware/com/blocdenotas/ui/notes/d;-><init>(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;Landroidx/lifecycle/MutableLiveData;)V
+
+    invoke-interface {v1, v2}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
+
+    return-void
+.end method
+
+.method h()V
+    .locals 3
+
+    const/4 v0, 0x1
+
+    invoke-direct {p0, v0}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->K(Z)V
+
+    new-instance v0, Landroidx/lifecycle/MutableLiveData;
+
+    invoke-direct {v0}, Landroidx/lifecycle/MutableLiveData;-><init>()V
+
+    new-instance v1, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity$e;
+
+    invoke-direct {v1, p0, v0}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity$e;-><init>(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;Landroidx/lifecycle/MutableLiveData;)V
+
+    invoke-virtual {v0, v1}, Landroidx/lifecycle/LiveData;->observeForever(Landroidx/lifecycle/Observer;)V
+
+    invoke-static {}, Ljikansoftware/com/blocdenotas/j/c;->b()Ljikansoftware/com/blocdenotas/b;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljikansoftware/com/blocdenotas/b;->c()Ljava/util/concurrent/Executor;
+
+    move-result-object v1
+
+    new-instance v2, Ljikansoftware/com/blocdenotas/ui/notes/h;
+
+    invoke-direct {v2, p0, v0}, Ljikansoftware/com/blocdenotas/ui/notes/h;-><init>(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;Landroidx/lifecycle/MutableLiveData;)V
+
+    invoke-interface {v1, v2}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
+
+    return-void
+.end method
+
+.method protected onActivityResult(IILandroid/content/Intent;)V
+    .locals 7
+    .param p3    # Landroid/content/Intent;
+        .annotation build Landroidx/annotation/Nullable;
+        .end annotation
+    .end param
+    .annotation build Landroidx/annotation/RequiresApi;
+        api = 0x13
+    .end annotation
+
+    invoke-super {p0, p1, p2, p3}, Landroidx/fragment/app/FragmentActivity;->onActivityResult(IILandroid/content/Intent;)V
+
+    const/4 v0, 0x1
+
+    const-string v1, "resultCode: %s"
+
+    const-string v2, "Sign in: FAILURE"
+
+    const/4 v3, -0x1
+
+    const/16 v4, 0x65
+
+    const/16 v5, 0x64
+
+    const/4 v6, 0x0
+
+    if-eq p1, v5, :cond_0
+
+    if-eq p1, v4, :cond_2
+
+    goto :goto_1
+
+    :cond_0
+    if-ne p2, v3, :cond_1
+
+    if-eqz p3, :cond_1
+
+    invoke-direct {p0, p3, v5}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->l(Landroid/content/Intent;I)V
+
+    goto :goto_0
+
+    :cond_1
+    invoke-static {p0, v2, v6}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Landroid/widget/Toast;->show()V
+
+    new-array p1, v0, [Ljava/lang/Object;
+
+    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v5
+
+    aput-object v5, p1, v6
+
+    invoke-static {v1, p1}, Ld/a/a;->a(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    :cond_2
+    :goto_0
+    if-ne p2, v3, :cond_3
+
+    if-eqz p3, :cond_3
+
+    invoke-direct {p0, p3, v4}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->l(Landroid/content/Intent;I)V
+
+    goto :goto_1
+
+    :cond_3
+    invoke-static {p0, v2, v6}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Landroid/widget/Toast;->show()V
+
+    new-array p1, v0, [Ljava/lang/Object;
+
+    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object p2
+
+    aput-object p2, p1, v6
+
+    invoke-static {v1, p1}, Ld/a/a;->a(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    :goto_1
+    return-void
+.end method
+
+.method public onAdClicked(Lcom/applovin/mediation/MaxAd;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public onAdCollapsed(Lcom/applovin/mediation/MaxAd;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public onAdDisplayFailed(Lcom/applovin/mediation/MaxAd;Lcom/applovin/mediation/MaxError;)V
+    .locals 0
+
+    iget-object p1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->g:Lcom/applovin/mediation/ads/MaxInterstitialAd;
+
+    invoke-virtual {p1}, Lcom/applovin/mediation/ads/MaxInterstitialAd;->loadAd()V
+
+    return-void
+.end method
+
+.method public onAdDisplayed(Lcom/applovin/mediation/MaxAd;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public onAdExpanded(Lcom/applovin/mediation/MaxAd;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public onAdHidden(Lcom/applovin/mediation/MaxAd;)V
+    .locals 0
+
+    iget-object p1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->g:Lcom/applovin/mediation/ads/MaxInterstitialAd;
+
+    invoke-virtual {p1}, Lcom/applovin/mediation/ads/MaxInterstitialAd;->loadAd()V
+
+    return-void
+.end method
+
+.method public onAdLoadFailed(Ljava/lang/String;Lcom/applovin/mediation/MaxError;)V
+    .locals 4
+
+    iget p1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->h:I
+
+    add-int/lit8 p1, p1, 0x1
+
+    iput p1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->h:I
+
+    sget-object p2, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;
+
+    const/4 v0, 0x6
+
+    invoke-static {v0, p1}, Ljava/lang/Math;->min(II)I
+
+    move-result p1
+
+    int-to-double v0, p1
+
+    const-wide/high16 v2, 0x4000000000000000L    # 2.0
+
+    invoke-static {v2, v3, v0, v1}, Ljava/lang/Math;->pow(DD)D
+
+    move-result-wide v0
+
+    double-to-long v0, v0
+
+    invoke-virtual {p2, v0, v1}, Ljava/util/concurrent/TimeUnit;->toMillis(J)J
+
+    move-result-wide p1
+
+    new-instance v0, Landroid/os/Handler;
+
+    invoke-direct {v0}, Landroid/os/Handler;-><init>()V
+
+    new-instance v1, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity$b;
+
+    invoke-direct {v1, p0}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity$b;-><init>(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;)V
+
+    invoke-virtual {v0, v1, p1, p2}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+
+    return-void
+.end method
+
+.method public onAdLoaded(Lcom/applovin/mediation/MaxAd;)V
+    .locals 0
+
+    const/4 p1, 0x0
+
+    iput p1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->h:I
+
+    return-void
+.end method
+
+.method public onBackPressed()V
+    .locals 2
+
+    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
+
+    const/16 v1, 0x17
+
+    if-lt v0, v1, :cond_0
+
+    iget-object v0, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->g:Lcom/applovin/mediation/ads/MaxInterstitialAd;
+
+    if-eqz v0, :cond_0
+
+    invoke-virtual {v0}, Lcom/applovin/mediation/ads/MaxInterstitialAd;->isReady()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    new-instance v0, Landroid/content/Intent;
+
+    const-class v1, Ljikansoftware/com/blocdenotas/ui/splash/SplashActivityRate;
+
+    invoke-direct {v0, p0, v1}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+
+    invoke-static {p0, v0}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->safedk_Activity_startActivity_9d898b58165fa4ba0e12c3900a2b8533(Landroid/app/Activity;Landroid/content/Intent;)V
+
+    invoke-virtual {p0}, Landroid/app/Activity;->finish()V
+
+    iget-object v0, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->g:Lcom/applovin/mediation/ads/MaxInterstitialAd;
+
+    invoke-virtual {v0}, Lcom/applovin/mediation/ads/MaxInterstitialAd;->showAd()V
+
+    goto :goto_0
+
+    :cond_0
+    invoke-super {p0}, Landroidx/activity/ComponentActivity;->onBackPressed()V
+
+    :goto_0
+    return-void
+.end method
+
+.method public onContextItemSelected(Landroid/view/MenuItem;)Z
+    .locals 4
+
+    new-instance v0, La/a/d/e;
+
+    invoke-direct {v0}, La/a/d/e;-><init>()V
+
+    invoke-interface {p1}, Landroid/view/MenuItem;->getIntent()Landroid/content/Intent;
+
+    move-result-object v1
+
+    const-string v2, "extra_note"
+
+    invoke-virtual {v1, v2}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    const-class v2, Ljikansoftware/com/blocdenotas/h/a;
+
+    invoke-virtual {v0, v1, v2}, La/a/d/e;->i(Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljikansoftware/com/blocdenotas/h/a;
+
+    invoke-interface {p1}, Landroid/view/MenuItem;->getItemId()I
+
+    move-result v1
+
+    const/4 v2, 0x1
+
+    if-eq v1, v2, :cond_2
+
+    const/4 v3, 0x2
+
+    if-eq v1, v3, :cond_1
+
+    const/4 v3, 0x3
+
+    if-eq v1, v3, :cond_0
+
+    invoke-super {p0, p1}, Landroid/app/Activity;->onContextItemSelected(Landroid/view/MenuItem;)Z
+
+    move-result p1
+
+    return p1
+
+    :cond_0
+    invoke-direct {p0, v0}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->J(Ljikansoftware/com/blocdenotas/h/a;)V
+
+    return v2
+
+    :cond_1
+    iget-object p1, v0, Ljikansoftware/com/blocdenotas/h/a;->b:Ljava/lang/String;
+
+    invoke-static {p0, p1}, Ljikansoftware/com/blocdenotas/j/e;->a(Landroid/content/Context;Ljava/lang/CharSequence;)V
+
+    const p1, 0x7f10003d
+
+    invoke-static {p0, p1, v2}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Landroid/widget/Toast;->show()V
+
+    return v2
+
+    :cond_2
+    iget-object p1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->c:Ljikansoftware/com/blocdenotas/ui/notes/o;
+
+    invoke-virtual {p1, v0}, Ljikansoftware/com/blocdenotas/ui/notes/o;->b(Ljikansoftware/com/blocdenotas/h/a;)V
+
+    return v2
+.end method
+
+.method protected onCreate(Landroid/os/Bundle;)V
+    .locals 2
+
+    invoke-super {p0, p1}, Landroidx/appcompat/app/AppCompatActivity;->onCreate(Landroid/os/Bundle;)V
+
+    const p1, 0x7f0b001e
+
+    invoke-static {p0, p1}, Landroidx/databinding/DataBindingUtil;->setContentView(Landroid/app/Activity;I)Landroidx/databinding/ViewDataBinding;
+
+    move-result-object p1
+
+    check-cast p1, Ljikansoftware/com/blocdenotas/f/e;
+
+    iput-object p1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->b:Ljikansoftware/com/blocdenotas/f/e;
+
+    invoke-static {p0}, Ljikansoftware/com/blocdenotas/j/c;->e(Landroid/content/Context;)Ljikansoftware/com/blocdenotas/ui/notes/p;
+
+    move-result-object p1
+
+    const-class v0, Ljikansoftware/com/blocdenotas/ui/notes/o;
+
+    invoke-virtual {p1, v0}, Ljikansoftware/com/blocdenotas/ui/notes/p;->create(Ljava/lang/Class;)Landroidx/lifecycle/ViewModel;
+
+    move-result-object p1
+
+    check-cast p1, Ljikansoftware/com/blocdenotas/ui/notes/o;
+
+    iput-object p1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->c:Ljikansoftware/com/blocdenotas/ui/notes/o;
+
+    new-instance p1, Ljikansoftware/com/blocdenotas/ui/notes/n;
+
+    iget-object v0, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->c:Ljikansoftware/com/blocdenotas/ui/notes/o;
+
+    invoke-direct {p1, v0}, Ljikansoftware/com/blocdenotas/ui/notes/n;-><init>(Ljikansoftware/com/blocdenotas/ui/notes/o;)V
+
+    iput-object p1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->a:Ljikansoftware/com/blocdenotas/ui/notes/n;
+
+    iget-object p1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->b:Ljikansoftware/com/blocdenotas/f/e;
+
+    iget-object v0, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->c:Ljikansoftware/com/blocdenotas/ui/notes/o;
+
+    invoke-virtual {p1, v0}, Ljikansoftware/com/blocdenotas/f/e;->g(Ljikansoftware/com/blocdenotas/ui/notes/o;)V
+
+    iget-object p1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->b:Ljikansoftware/com/blocdenotas/f/e;
+
+    invoke-virtual {p1, p0}, Landroidx/databinding/ViewDataBinding;->setLifecycleOwner(Landroidx/lifecycle/LifecycleOwner;)V
+
+    iget-object p1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->b:Ljikansoftware/com/blocdenotas/f/e;
+
+    iget-object p1, p1, Ljikansoftware/com/blocdenotas/f/e;->b:Landroidx/recyclerview/widget/RecyclerView;
+
+    new-instance v0, Landroidx/recyclerview/widget/DividerItemDecoration;
+
+    const/4 v1, 0x1
+
+    invoke-direct {v0, p0, v1}, Landroidx/recyclerview/widget/DividerItemDecoration;-><init>(Landroid/content/Context;I)V
+
+    invoke-virtual {p1, v0}, Landroidx/recyclerview/widget/RecyclerView;->addItemDecoration(Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;)V
+
+    iget-object p1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->b:Ljikansoftware/com/blocdenotas/f/e;
+
+    iget-object p1, p1, Ljikansoftware/com/blocdenotas/f/e;->b:Landroidx/recyclerview/widget/RecyclerView;
+
+    iget-object v0, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->a:Ljikansoftware/com/blocdenotas/ui/notes/n;
+
+    invoke-virtual {p1, v0}, Landroidx/recyclerview/widget/RecyclerView;->setAdapter(Landroidx/recyclerview/widget/RecyclerView$Adapter;)V
+
+    iget-object p1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->c:Ljikansoftware/com/blocdenotas/ui/notes/o;
+
+    iget-object p1, p1, Ljikansoftware/com/blocdenotas/ui/notes/o;->c:Landroidx/lifecycle/LiveData;
+
+    new-instance v0, Ljikansoftware/com/blocdenotas/ui/notes/a;
+
+    invoke-direct {v0, p0}, Ljikansoftware/com/blocdenotas/ui/notes/a;-><init>(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;)V
+
+    invoke-virtual {p1, p0, v0}, Landroidx/lifecycle/LiveData;->observe(Landroidx/lifecycle/LifecycleOwner;Landroidx/lifecycle/Observer;)V
+
+    iget-object p1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->c:Ljikansoftware/com/blocdenotas/ui/notes/o;
+
+    iget-object p1, p1, Ljikansoftware/com/blocdenotas/ui/notes/o;->g:Landroidx/lifecycle/LiveData;
+
+    new-instance v0, Ljikansoftware/com/blocdenotas/ui/notes/b;
+
+    invoke-direct {v0, p0}, Ljikansoftware/com/blocdenotas/ui/notes/b;-><init>(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;)V
+
+    invoke-virtual {p1, p0, v0}, Landroidx/lifecycle/LiveData;->observe(Landroidx/lifecycle/LifecycleOwner;Landroidx/lifecycle/Observer;)V
+
+    iget-object p1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->c:Ljikansoftware/com/blocdenotas/ui/notes/o;
+
+    iget-object p1, p1, Ljikansoftware/com/blocdenotas/ui/notes/o;->e:Landroidx/lifecycle/LiveData;
+
+    new-instance v0, Ljikansoftware/com/blocdenotas/ui/notes/c;
+
+    invoke-direct {v0, p0}, Ljikansoftware/com/blocdenotas/ui/notes/c;-><init>(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;)V
+
+    invoke-virtual {p1, p0, v0}, Landroidx/lifecycle/LiveData;->observe(Landroidx/lifecycle/LifecycleOwner;Landroidx/lifecycle/Observer;)V
+
+    iget-object p1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->c:Ljikansoftware/com/blocdenotas/ui/notes/o;
+
+    invoke-virtual {p1}, Ljikansoftware/com/blocdenotas/ui/notes/o;->d()V
+
+    invoke-direct {p0}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->m()V
+
+    invoke-direct {p0}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->n()V
+
+    const p1, 0x7f080142
+
+    invoke-virtual {p0, p1}, Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;
+
+    move-result-object p1
+
+    invoke-virtual {p0, p1}, Landroid/app/Activity;->registerForContextMenu(Landroid/view/View;)V
+
+    invoke-virtual {p0}, Landroid/app/Activity;->getApplicationContext()Landroid/content/Context;
+
+    move-result-object p1
+
+    invoke-static {p1}, Lcom/applovin/sdk/AppLovinSdk;->getInstance(Landroid/content/Context;)Lcom/applovin/sdk/AppLovinSdk;
+
+    move-result-object p1
+
+    const-string v0, "max"
+
+    invoke-virtual {p1, v0}, Lcom/applovin/sdk/AppLovinSdk;->setMediationProvider(Ljava/lang/String;)V
+
+    invoke-virtual {p0}, Landroid/app/Activity;->getApplicationContext()Landroid/content/Context;
+
+    move-result-object p1
+
+    new-instance v0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity$a;
+
+    invoke-direct {v0, p0}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity$a;-><init>(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;)V
+
+    invoke-static {p1, v0}, Lcom/applovin/sdk/AppLovinSdk;->initializeSdk(Landroid/content/Context;Lcom/applovin/sdk/AppLovinSdk$SdkInitializationListener;)V
+
+    return-void
+.end method
+
+.method public onCreateOptionsMenu(Landroid/view/Menu;)Z
+    .locals 3
+
+    invoke-virtual {p0}, Landroidx/appcompat/app/AppCompatActivity;->getMenuInflater()Landroid/view/MenuInflater;
+
+    move-result-object v0
+
+    const v1, 0x7f0c0002
+
+    invoke-virtual {v0, v1, p1}, Landroid/view/MenuInflater;->inflate(ILandroid/view/Menu;)V
+
+    const v0, 0x7f080104
+
+    invoke-interface {p1, v0}, Landroid/view/Menu;->findItem(I)Landroid/view/MenuItem;
+
+    move-result-object p1
+
+    const-string v0, "android.permission.READ_EXTERNAL_STORAGE"
+
+    invoke-virtual {p0, v0}, Landroid/app/Activity;->checkCallingOrSelfPermission(Ljava/lang/String;)I
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    new-instance v0, Ljava/io/File;
+
+    invoke-static {}, Landroid/os/Environment;->getExternalStorageDirectory()Ljava/io/File;
+
+    move-result-object v1
+
+    const-string v2, "blocdenotas.txt"
+
+    invoke-direct {v0, v1, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+
+    invoke-virtual {v0}, Ljava/io/File;->exists()Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    const/4 v0, 0x0
+
+    invoke-interface {p1, v0}, Landroid/view/MenuItem;->setVisible(Z)Landroid/view/MenuItem;
+
+    :cond_0
+    const/4 p1, 0x1
+
+    return p1
+.end method
+
+.method protected onDestroy()V
+    .locals 0
+
+    invoke-super {p0}, Landroidx/appcompat/app/AppCompatActivity;->onDestroy()V
+
+    return-void
+.end method
+
+.method public onOptionsItemSelected(Landroid/view/MenuItem;)Z
+    .locals 3
+
+    invoke-interface {p1}, Landroid/view/MenuItem;->getItemId()I
+
+    move-result v0
+
+    const/4 v1, 0x1
+
+    packed-switch v0, :pswitch_data_0
+
+    :pswitch_0
+    invoke-super {p0, p1}, Landroid/app/Activity;->onOptionsItemSelected(Landroid/view/MenuItem;)Z
+
+    move-result p1
+
+    return p1
+
+    :pswitch_1
+    invoke-static {p0}, Ljikansoftware/com/blocdenotas/ui/notes/m;->a(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;)V
+
+    return v1
+
+    :pswitch_2
+    invoke-direct {p0}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->c()V
+
+    return v1
+
+    :pswitch_3
+    const-string p1, "https://sites.google.com/view/jikansoftware/urgente?authuser=0"
+
+    invoke-static {p0, p1}, Ljikansoftware/com/blocdenotas/j/e;->b(Landroid/content/Context;Ljava/lang/String;)V
+
+    return v1
+
+    :pswitch_4
+    iget-object p1, p0, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->d:Landroid/app/AlertDialog;
+
+    invoke-virtual {p1}, Landroid/app/AlertDialog;->show()V
+
+    return v1
+
+    :pswitch_5
+    invoke-static {p0}, Lcom/google/android/gms/auth/api/signin/GoogleSignIn;->getLastSignedInAccount(Landroid/content/Context;)Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+
+    move-result-object p1
+
+    if-nez p1, :cond_0
+
+    const/16 p1, 0x64
+
+    invoke-direct {p0, p1}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->i(I)V
+
+    goto :goto_0
+
+    :cond_0
+    invoke-static {p0}, Ljikansoftware/com/blocdenotas/ui/notes/m;->b(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;)V
+
+    :goto_0
+    return v1
+
+    :pswitch_6
+    invoke-static {p0}, Ljikansoftware/com/blocdenotas/ui/notes/m;->d(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;)V
+
+    return v1
+
+    :pswitch_7
+    new-instance p1, Landroid/app/AlertDialog$Builder;
+
+    invoke-direct {p1, p0}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
+
+    const v0, 0x7f100041
+
+    invoke-virtual {p1, v0}, Landroid/app/AlertDialog$Builder;->setTitle(I)Landroid/app/AlertDialog$Builder;
+
+    const v0, 0x7f100044
+
+    invoke-virtual {p1, v0}, Landroid/app/AlertDialog$Builder;->setMessage(I)Landroid/app/AlertDialog$Builder;
+
+    const/high16 v0, 0x7f100000
+
+    sget-object v2, Ljikansoftware/com/blocdenotas/ui/notes/k;->a:Ljikansoftware/com/blocdenotas/ui/notes/k;
+
+    invoke-virtual {p1, v0, v2}, Landroid/app/AlertDialog$Builder;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+
+    invoke-virtual {p1}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+
+    return v1
+
+    nop
+
+    :pswitch_data_0
+    .packed-switch 0x7f0800fd
+        :pswitch_7
+        :pswitch_6
+        :pswitch_0
+        :pswitch_5
+        :pswitch_4
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
+    .end packed-switch
+.end method
+
+.method public onRequestPermissionsResult(I[Ljava/lang/String;[I)V
+    .locals 0
+    .param p2    # [Ljava/lang/String;
+        .annotation build Landroidx/annotation/NonNull;
+        .end annotation
+    .end param
+    .param p3    # [I
+        .annotation build Landroidx/annotation/NonNull;
+        .end annotation
+    .end param
+
+    invoke-super {p0, p1, p2, p3}, Landroidx/fragment/app/FragmentActivity;->onRequestPermissionsResult(I[Ljava/lang/String;[I)V
+
+    invoke-static {p0, p1, p3}, Ljikansoftware/com/blocdenotas/ui/notes/m;->f(Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;I[I)V
+
+    return-void
+.end method
+
+.method public synthetic r(Landroid/content/DialogInterface;I)V
+    .locals 0
+
+    invoke-direct {p0, p1, p2}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->q(Landroid/content/DialogInterface;I)V
+
+    return-void
+.end method
+
+.method public synthetic t(Landroidx/lifecycle/MutableLiveData;)V
+    .locals 0
+
+    invoke-direct {p0, p1}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->s(Landroidx/lifecycle/MutableLiveData;)V
+
+    return-void
+.end method
+
+.method public synthetic v(Landroidx/lifecycle/MutableLiveData;)V
+    .locals 0
+
+    invoke-direct {p0, p1}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->u(Landroidx/lifecycle/MutableLiveData;)V
+
+    return-void
+.end method
+
+.method public synthetic x(ILcom/google/android/gms/auth/api/signin/GoogleSignInAccount;)V
+    .locals 0
+
+    invoke-direct {p0, p1, p2}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->w(ILcom/google/android/gms/auth/api/signin/GoogleSignInAccount;)V
+
+    return-void
+.end method
+
+.method public synthetic z(Landroid/content/DialogInterface;I)V
+    .locals 0
+
+    invoke-direct {p0, p1, p2}, Ljikansoftware/com/blocdenotas/ui/notes/NotesActivity;->y(Landroid/content/DialogInterface;I)V
+
+    return-void
+.end method
